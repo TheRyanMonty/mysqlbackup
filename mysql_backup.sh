@@ -34,7 +34,6 @@ SetConfig() {
 ############################################################################
 ### SetConfig - Purpose is to set the config file from user argument
 ############################################################################
-
 #Check if arguments are passed in, if not prompt the user
 if [ $# = 0 ]
 	then
@@ -52,7 +51,6 @@ if [ $# = 0 ]
 fi
 
 unset argument
-
 }
 
 SourceConfig() {
@@ -64,7 +62,6 @@ else
 	printf "${config_path} does not exist or is not readable, exiting...\n"
 	exit 1
 fi
-
 }
 
 ValidateConfig() {
@@ -75,7 +72,7 @@ if [ ! -r ${BACKUP_DIR} ]; then
 fi 
 }
 
-DeleteOldBackups () {
+DeleteOldBackups() {
 echo "Deleting $BACKUP_DIR/*.sql.gz older than $KEEP_BACKUPS_FOR days"
 find $BACKUP_DIR -type f -name "*.sql.gz" -mtime +$KEEP_BACKUPS_FOR -exec rm {} \;
 CaptureExitCode
